@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Sinta ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Georgia", serif;
+            min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(circle at top, #5c1831, transparent 45%),
+                linear-gradient(135deg, #16080f, #2b0b18, #12060b);
+            overflow-x: hidden;
+        }
+
+        /* Bintang */
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        /* Halaman utama */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            max-width: 700px;
+        }
+
+        .small-text {
+            color: #f5b5c8;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 10vw, 90px);
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            color: #ff6f91;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #f6dce4;
+            margin-bottom: 35px;
+        }
+
+        .heart {
+            font-size: 55px;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        button {
+            border: none;
+            background: linear-gradient(135deg, #ff4f78, #c92f59);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 55, 100, 0.25);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 55, 100, 0.4);
+        }
+
+        /* Surat */
+        .letter-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter {
+            width: min(700px, 100%);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter h2 {
+            color: #ff8eaa;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .letter p {
+            color: #f4dce3;
+            line-height: 2;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            color: #ff9db5 !important;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        /* Surprise */
+        .surprise {
+            text-align: center;
+            padding: 80px 20px 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .surprise h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .surprise p {
+            color: #eacbd5;
+            margin-bottom: 30px;
+        }
+
+        .hidden-message {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .hidden-message.show {
+            display: block;
+        }
+
+        .hidden-message h3 {
+            font-size: 30px;
+            color: #ff7898;
+            margin-bottom: 20px;
+        }
+
+        .hidden-message p {
+            line-height: 2;
+            font-size: 18px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hati jatuh */
+        .falling-heart {
+            position: fixed;
+            top: -20px;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 10;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: #9f7581;
+            padding: 25px;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 600px) {
+            .letter {
+                padding: 30px 22px;
+            }
+
+            .letter h2 {
+                font-size: 27px;
+            }
+
+            .letter p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Bintang -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Opening -->
+    <section class="hero">
+
+        <div class="content">
+
+            <div class="heart">❤️</div>
+
+            <div class="small-text">
+                Sebuah surat kecil dari Ega
+            </div>
+
+            <h1>
+                Untuk <span>Sinta</span>
+            </h1>
+
+            <p class="subtitle">
+                Ada sesuatu yang ingin Ega sampaikan
+                kepada seseorang yang sangat spesial.
+            </p>
+
+            <button onclick="bukaSurat()">
+                Buka suratnya 💌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Surat -->
+    <section class="letter-section" id="surat">
+
+        <div class="letter">
+
+            <h2>Untuk Sinta ❤️</h2>
+
+            <p>
+                Hai, Sinta.
+            </p>
+
+            <p>
+                Mungkin ini cuma sebuah website sederhana,
+                tapi setiap bagian di dalamnya dibuat dengan
+                satu orang yang ada di pikiran Ega.
+            </p>
+
+            <p>
+                Kamu.
+            </p>
+
+            <p>
+                Terima kasih karena sudah menjadi bagian
+                dari cerita hidup Ega. Terima kasih untuk
+                setiap senyum, setiap cerita, setiap waktu
+                yang kita habiskan bersama.
+            </p>
+
+            <p>
+                Ega mungkin nggak selalu bisa mengungkapkan
+                semuanya dengan kata-kata, tapi ada satu hal
+                yang ingin Ega kamu tahu...
+            </p>
+
+            <p>
+                <strong>
+                    Ega sayang Sinta. ❤️
+                </strong>
+            </p>
+
+            <p class="signature">
+                — Dari Ega, untuk Sinta ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Surprise -->
+    <section class="surprise">
+
+        <h2>Masih ada satu hal... 💌</h2>
+
+        <p>
+            Jangan pergi dulu, Sinta.
+            Ada sesuatu yang ingin Ega tunjukkan.
+        </p>
+
+        <button onclick="surprise()">
+            Klik di sini ❤️
+        </button>
+
+        <div class="hidden-message" id="message">
+
+            <h3>Sinta, ❤️</h3>
+
+            <p>
+                Kalau suatu hari nanti kamu membuka website ini
+                lagi, Ega ingin kamu mengingat satu hal:
+            </p>
+
+            <p>
+                Di antara begitu banyak orang di dunia,
+                Ega bersyukur pernah menemukan kamu.
+            </p>
+
+            <p>
+                Semoga kita punya lebih banyak cerita,
+                lebih banyak tawa,
+                lebih banyak kenangan,
+                dan lebih banyak hari yang bisa kita lewati
+                bersama.
+            </p>
+
+            <p>
+                <strong>
+                    I love you, Sinta. ❤️
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Dibuat dengan ❤️ oleh Ega untuk Sinta
+    </footer>
+
+
+    <script>
+
+        // Membuat bintang secara random
+        const stars = document.getElementById("stars");
+
+        for (let i = 0; i < 100; i++) {
+
+            const star = document.createElement("div");
+
+            star.classList.add("star");
+
+            star.style.left = Math.random() * 100 + "%";
+            star.style.top = Math.random() * 100 + "%";
+
+            star.style.animationDelay =
+                Math.random() * 2 + "s";
+
+            stars.appendChild(star);
+        }
+
+
+        // Membuka surat
+        function bukaSurat() {
+
+            document.getElementById("surat")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        // Surprise
+        function surprise() {
+
+            const message =
+                document.getElementById("message");
+
+            message.classList.add("show");
+
+            for (let i = 0; i < 30; i++) {
+
+                setTimeout(() => {
+
+                    const heart =
+                        document.createElement("div");
+
+                    heart.classList.add("falling-heart");
+
+                    heart.innerHTML =
+                        Math.random() > 0.5
+                        ? "❤️"
+                        : "💗";
+
+                    heart.style.left =
+                        Math.random() * 100 + "vw";
+
+                    heart.style.animationDuration =
+                        3 + Math.random() * 3 + "s";
+
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+
+                }, i * 100);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
